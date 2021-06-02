@@ -1,0 +1,70 @@
+const calcular = document.getElementById('calcularIMC');
+
+function calcularIMC() {
+    const altura = document.getElementById('altura').value; // Valor da Altura
+    const peso = document.getElementById('peso').value;    // Valor do Peso
+    const resultado = document.getElementById('saida'); // Campo do resultado
+
+    if (altura == '' || peso == '') { // Alerta 
+        resultado.textContent = 'Preencha todos os campos';
+        document.querySelector('#saida').style.background = 'red';
+        document.querySelector('#saida').style.color = 'white';
+    }
+
+    else if (altura !== '' && peso !== '') {
+
+        let valorIMC = (peso / (altura ** 2)).toFixed(1); // Calculo do IMC
+
+        let sexo = document.getElementsByName('sexo');
+
+        if (sexo[0].checked) { // Masculino
+            if (valorIMC < 18) {
+                resultado.textContent = 'Abaixo do Peso';// Resultado
+                document.querySelector('#saida').style.background = "yellow";//Cor do Background.
+                document.querySelector('#saida').style.color = "black";//Cor do texto diferente dos demais.
+            }
+            else if (valorIMC < 26.5) {
+                resultado.textContent = 'Peso Normal';//Texto da situação.
+                document.querySelector('#saida').style.background = "green";//Cor do Background.
+            }
+            else if (valorIMC < 28.4) {
+                resultado.textContent = 'Marginalmente Acima do Peso';//Texto da situação.
+                document.querySelector('#saida').style.background = "peru";//Cor do Background.
+            }
+            else if (valorIMC < 35.3) {
+                resultado.textContent = 'Acima do Peso Ideal';//Texto da situação.
+                document.querySelector('#saida').style.background = "orange";//Cor do Background.
+            }
+            else {
+                resultado.textContent = 'Obeso';//Texto da situação.
+                document.querySelector('#saida').style.background = "red";//Cor do Background.
+            }
+        }
+
+
+        else { // Feminino 
+            if (valorIMC < 18) {
+                resultado.textContent = 'Abaixo do Peso';//Texto da situação.
+                document.querySelector('#saida').style.background = "yellow";//Cor do Background.
+                document.querySelector('#saida').style.color = "black";//Cor do texto diferente dos demais.
+            }
+            else if (valorIMC < 26.6) {
+                resultado.textContent = 'Peso Normal';//Texto da situação.
+                document.querySelector('#saida').style.background = "green";//Cor do Background.
+            }
+            else if (valorIMC < 29.4) {
+                resultado.textContent = 'Marginalmente Acima do Peso';//Texto da situação.
+                document.querySelector('#saida').style.background = "peru";//Cor do Background.
+            }
+            else if (valorIMC < 35.2) {
+                resultado.textContent = 'Acima do Peso Ideal';//Texto da situação.
+                document.querySelector('#saida').style.background = "orange";//Cor do Background.
+            }
+            else {
+                resultado.textContent = 'Obeso';//Texto da situação.
+                document.querySelector('#saida').style.background = "red";//Cor do Background.
+            }
+        }
+
+    }
+}
